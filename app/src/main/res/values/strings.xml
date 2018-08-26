@@ -1,3 +1,28 @@
 <resources>
+
+
     <string name="app_name">ButterKnifePro</string>
+    <string name="spinner_name">城市选择</string>
+
+    <string name="btn_name">ButterKnife绑定</string>
+
+    <!--绑定String数组-->
+    <string-array name="city">
+        <item>北京市</item>
+        <item>上海市</item>
+        <item>深圳市</item>
+        <item>广州市</item>
+        <item>太原市</item>
+        <item>济南市</item>
+        <item>西安市</item>
+        <item>天津市</item>
+        <item>东营市</item>
+        <item>青岛市</item>
+        <item>细沙市</item>
+        <item>八八市</item>
+        <item>看看市</item>
+    </string-array>
+
+
+
 </resources>
