@@ -2,9 +2,13 @@ package com.oztaking.www.butterknifepro.Base;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,6 +26,7 @@ import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
 import butterknife.OnLongClick;
@@ -148,6 +153,44 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
+    /**
+     *
+     * [15] @OnCheckedChanged({R.id.rg_home,R.id.rg_wealth,R.id.rg_account})
+     */
+    @OnCheckedChanged({R.id.id_radioButton1BaseActivity,R.id.id_radioButton2BaseActivity,
+    R.id.id_radioButton3BaseActivity})
+    public void onCheckedChangeListener(CompoundButton view,
+                                        boolean isChanged){
+        switch(view.getId()){
+             case R.id.id_radioButton1BaseActivity:
+                 if (isChanged){
+                     Logger.i("id_radioButton1BaseActivity");
+                 }
+                  break;
+            case R.id.id_radioButton2BaseActivity:
+                if (isChanged){
+                    Logger.i("id_radioButton2BaseActivity");
+                }
+                break;
+            case R.id.id_radioButton3BaseActivity:
+                if (isChanged){
+                    Logger.i("id_radioButton3BaseActivity");
+                }
+                break;
+             default:
+                  break;
+        }
+
+    }
+
+
+    @BindViews({R.id.id_editText1BaseActivity,R.id.id_editText2BaseActivity,R.id.id_editText3BaseActivity,})
+    List<EditText> mEditTextList;
+
+
+
+
+
 
 
     @Override
@@ -174,12 +217,31 @@ public class BaseActivity extends AppCompatActivity {
         }
 
 
+        /**
+         * [16] findById
+         *
+         * Butter Knife仍然包含了findById()方法，
+         * 用于仍需从一个view ，Activity，
+         * 或者Dialog上初始化view的时候，并且它可以自动转换类型
+         */
+        View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.item_layout,
+                null);
+        Button mBtn1 = ButterKnife.findById(view, R.id.id_btn1_item);
+
+        /**
+         * [17] apply：设置多个view的属性,允许立即对列表中的所有视图进行操作。
+         */
 
 
-
-
-
-
+        ButterKnife.apply(mTextViewList, View.ALPHA,0.0f);
+        /**
+         * 需要配合下面的action
+         */
+        ButterKnife.apply(mEditTextList,DISABLE);
+        /**
+         * 需要配合下面的setter
+         */
+        ButterKnife.apply(mEditTextList,ENABLE,false);
 
     }
 
@@ -189,6 +251,27 @@ public class BaseActivity extends AppCompatActivity {
     private void BindButterKnife() {
         ButterKnife.bind(this);
     }
+
+    /**
+     * [18]设置属性 Action 接口
+     */
+    static final ButterKnife.Action<View> DISABLE = new ButterKnife.Action<View>() {
+        @Override
+        public void apply(@NonNull View view, int index) {
+            view.setEnabled(false); //此处直接传递的是false
+        }
+    };
+
+    /**
+     * [19]Setter接口设置属性
+     */
+    static final ButterKnife.Setter<View,Boolean> ENABLE = new ButterKnife.Setter<View, Boolean>() {
+        @Override
+        public void set(@NonNull View view, Boolean value, int index) {
+            view.setEnabled(value);//此处根据传递的值进行变化
+        }
+    };
+
 
 
 }

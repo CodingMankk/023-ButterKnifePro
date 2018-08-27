@@ -105,12 +105,66 @@
         android:layout_height="wrap_content"
         android:spinnerMode="dialog"
         android:prompt="@string/spinner_name"
-        android:entries="@array/city"
-
-        >
-
-
+        android:entries="@array/city">
     </android.support.v7.widget.AppCompatSpinner>
+
+
+    <RadioGroup
+        android:id="@+id/id_radio_group_BaseActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/id_radioButton1BaseActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:text="小明"/>
+
+        <RadioButton
+            android:id="@+id/id_radioButton2BaseActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:text="小红"/>
+
+        <RadioButton
+            android:id="@+id/id_radioButton3BaseActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:text="小丽"/>
+
+
+    </RadioGroup>
+
+    <EditText
+        android:layout_gravity="center"
+        android:hint="@string/app_name"
+        android:id="@+id/id_editText1BaseActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="aaa"/>
+
+    <EditText
+        android:layout_gravity="center"
+        android:hint="@string/app_name"
+        android:id="@+id/id_editText2BaseActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="bbb"/>
+
+    <EditText
+        android:layout_gravity="center"
+        android:hint="@string/app_name"
+        android:id="@+id/id_editText3BaseActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="ccc"/>
 
 
 </LinearLayout>
